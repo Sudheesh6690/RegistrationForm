@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Login Form</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+</head>
+<body>
+  <div class="main-container">
+
+        <div class="main">
+
+                <form class="form-a" action="Form">
+
+                    <div class="hedline"><h2>Login Form</h2></div>
+
+                    <div class="Frist">
+                        <label for="username">Frist Name</label><br>
+                        <input type="text" id="username" autocomplete="name">
+                    </div>
+
+                    <div class="last">
+                        <label for="name">Last Name</label> <br>
+                        <input type="text" id="name" autocomplete="name">
+                    </div>
+                
+                    <div class="pass">
+                        <label for="password">Password</label> <br>
+                        <input type="password" id="password">
+                    </div>
+                    <div class="confirm-pass">
+                        <label for="confirm-pass">Password</label> <br>
+                        <input type="password" id="confirm-pass">
+                    </div>
+
+                    <div class="Gender">
+                        <label for="Gender">Gender</label>
+
+                        <div class="select-option">
+                            <select name="" id="Gender">
+                                <option value="">Male</option>
+                                <option value="">Female</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="gmail">
+                        <label for="Gmail">Gmail</label><br>
+                        <input type="text" id="Gmail" autocomplete="email">
+                    </div>
+
+                    <div class="phone">
+
+                        <label for="tel">Phone Number</label><br>
+                        <input type="tel" id="tel" autocomplete="tel" placeholder="XXX XXX XXXX">
+                    </div>
+
+                    <div class="add">
+                        <label for="Address">Address</label><br>
+                        <input type="text" id="Address" autocomplete="street-address">
+                    </div>
+
+                    <div class="postal-code">
+                        <label for="postal-code">postal code</label><br>
+                        <input type="number" id="postal-code" autocomplete="postal-code">
+
+                    </div> 
+
+                    <div class="submit-btn">
+                        <button class="btn">Submit</button>
+                    </div>      
+
+                    <p class="optionss">or</p>
+
+
+                          <!-- Google Sign-In Button -->
+    <div id="g_id_onload"
+    data-client_id="YOUR_GOOGLE_CLIENT_ID"
+    data-callback="handleCredentialResponse"
+    data-auto_prompt="false">
+</div>
+
+<div class="g_id_signin" data-type="standard"></div>
+
+<!-- Display user info after login -->
+<div id="user-info"></div>
+                    
+                
+                </form>
+
+        </div>
+
+    
+
+<script>
+    function handleCredentialResponse(response) {
+        // Parse the ID token
+        const responsePayload = JSON.parse(atob(response.credential.split('.')[1]));
+        
+        // Display user information
+        document.getElementById('user-info').innerHTML =
+            `<h3>Welcome, ${responsePayload.name}</h3>
+            <p>Email: ${responsePayload.email}</p>
+            <img src="${responsePayload.picture}" alt="Profile Image">`;
+    }
+</script>
+
+  </div>
+
+</body>
+</html>
